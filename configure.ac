@@ -1,5 +1,5 @@
 AC_PREREQ(2.60)
-AC_INIT(ofono, 1.16)
+AC_INIT(ofono, 1.17)
 
 AM_INIT_AUTOMAKE([foreign subdir-objects color-tests])
 AC_CONFIG_HEADERS(config.h)
@@ -161,6 +161,11 @@ AC_ARG_ENABLE(isimodem, AC_HELP_STRING([--disable-isimodem],
 					[enable_isimodem=${enableval}])
 AM_CONDITIONAL(ISIMODEM, test "${enable_isimodem}" != "no")
 
+AC_ARG_ENABLE(rilmodem, AC_HELP_STRING([--disable-rilmodem],
+				[disable RIL modem support]),
+					[enable_rilmodem=${enableval}])
+AM_CONDITIONAL(RILMODEM, test "${enable_rilmodem}" != "no")
+
 AC_ARG_ENABLE(qmimodem, AC_HELP_STRING([--disable-qmimodem],
 				[disable Qualcomm QMI modem support]),
 					[enable_qmimodem=${enableval}])
@@ -188,7 +193,7 @@ AC_ARG_WITH([provisiondb], AC_HELP_STRING([--with-provisiondb=FILE],
 	[location of provision database]), [path_provisiondb=${withval}])
 
 AC_ARG_ENABLE(provision, AC_HELP_STRING([--disable-provision],
-				[disable provisioning suport]),
+				[disable provisioning support]),
 					[enable_provision=${enableval}])
 if (test "${enable_provision}" != "no"); then
 	if (test -n "${path_provisiondb}"); then
