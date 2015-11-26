@@ -268,6 +268,12 @@ builtin_sources += drivers/atmodem/atutil.h \
 			drivers/mbmmodem/stk.c \
 			drivers/mbmmodem/location-reporting.c
 
+builtin_modules += telitmodem
+builtin_sources += drivers/atmodem/atutil.h \
+			drivers/telitmodem/telitmodem.h \
+			drivers/telitmodem/telitmodem.c \
+			drivers/telitmodem/location-reporting.c
+
 builtin_modules += hsomodem
 builtin_sources += drivers/atmodem/atutil.h \
 			drivers/hsomodem/hsomodem.h \
@@ -420,6 +426,12 @@ builtin_sources += plugins/connman.c
 builtin_modules += he910
 builtin_sources += plugins/he910.c
 
+builtin_modules += quectel
+builtin_sources += plugins/quectel.c
+
+builtin_modules += ublox
+builtin_sources += plugins/ublox.c
+
 if BLUETOOTH
 if BLUEZ4
 builtin_modules += bluez4
@@ -487,6 +499,9 @@ builtin_sources += examples/private-network.c
 
 builtin_modules += stktest
 builtin_sources += plugins/stktest.c
+
+builtin_modules += emulator_fuzz
+builtin_sources += plugins/emulator_fuzz.c
 endif
 
 builtin_modules += smart_messaging
@@ -566,7 +581,8 @@ doc_files = doc/overview.txt doc/ofono-paper.txt doc/release-faq.txt \
 			doc/audio-settings-api.txt doc/text-telephony-api.txt \
 			doc/calypso-modem.txt doc/message-api.txt \
 			doc/location-reporting-api.txt \
-			doc/certification.txt doc/siri-api.txt
+			doc/certification.txt doc/siri-api.txt \
+			doc/telit-modem.txt
 
 
 test_scripts = test/backtrace \
@@ -659,7 +675,8 @@ test_scripts = test/backtrace \
 		test/hangup-multiparty \
 		test/hangup-call \
 		test/display-icon \
-		test/set-msisdn
+		test/set-msisdn \
+		test/set-ddr
 
 if TEST
 testdir = $(pkglibdir)/test
